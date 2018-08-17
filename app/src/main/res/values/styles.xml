@@ -1,0 +1,73 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/home_color1</item>
+
+        <item name="android:textViewStyle">@style/RobotoTextViewStyle</item>
+        <item name="buttonStyle">@style/RobotoButtonStyle</item>
+        <item name="alertDialogTheme">@style/MyAlertDialogTheme</item>
+        <item name="android:datePickerDialogTheme">@style/MyAlertDialogTheme</item>
+    </style>
+    <style name="navItemsTextApearance" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">@font/amiri_bold</item>
+    </style>
+    <style name="checkBoxStyle" parent="Base.Theme.AppCompat">
+        <item name="colorAccent">@color/light_blue</item>
+        <item name="android:textColorSecondary">@color/home_color1</item>
+    </style>
+
+    <style name="RobotoTextViewStyle" parent="android:Widget.TextView">
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">@font/amiri_bold</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="RobotoButtonStyle" parent="android:Widget.Button">
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">@font/amiri_regular</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:background">@drawable/button_normal</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <!--app bar style-->
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" >
+        <item name="drawerArrowStyle">@style/DrawerHamburgerStyle</item>
+    </style>
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <!--hamburger icon style-->
+    <style name="DrawerHamburgerStyle" parent="@style/Widget.AppCompat.DrawerArrowToggle">
+        <item name="spinBars">true</item>
+        <item name="android:src">@drawable/ic_menu_icon</item>
+        <item name="android:tint">@color/color_button_normal</item>
+        <item name="color">@color/color_button_normal</item>
+    </style>
+
+    <style name="MyAlertDialogTheme" parent="Theme.AppCompat.Light.Dialog">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/home_color1</item>
+        <item name="android:buttonBarStyle">@style/RobotoButtonStyle</item>
+    </style>
+
+    <style name="MyAlertDialogTheme2" parent="Base.Theme.AppCompat.Dialog">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/home_color1</item>
+        <item name="android:buttonBarStyle">@style/RobotoButtonStyle</item>
+    </style>
+
+</resources>
