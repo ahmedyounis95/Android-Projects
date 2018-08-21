@@ -16,6 +16,7 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V> imple
 
     @Override
     public void onDrawerOptionAboutClick() {
+        getMvpView().showAboutFragment();
     }
 
     @Override

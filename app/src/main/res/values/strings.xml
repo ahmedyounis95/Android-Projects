@@ -17,4 +17,14 @@
     <string name="language_settings">عربي</string>
     <string name="logout">Logout</string>
     <string name="login">Login</string>
+    <string name="suggestions">Suggestions</string>
+    <string name="complains">Complaints</string>
+    <string name="invoices">Invoices</string>
+    <string name="information">Information</string>
+    <string name="all_info">All Info</string>
+    <string name="posted_on">Posted on</string>
+    <string name="date_samle">10–2–2015</string>
+    <string name="time_sample">10:30AM</string>
+    <string name="info_title_sample">How to save water at home</string>
+    <string name="read_more">Read more</string>
 </resources>

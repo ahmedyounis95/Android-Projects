@@ -7,6 +7,9 @@ import dagger.Module;
 import dagger.Provides;
 import hcww.com.orchtech.hcww.mvpebrd.di.ActivityContext;
 import hcww.com.orchtech.hcww.mvpebrd.di.PerActivity;
+import hcww.com.orchtech.hcww.mvpebrd.ui.home.HomeMvpPresenter;
+import hcww.com.orchtech.hcww.mvpebrd.ui.home.HomeMvpView;
+import hcww.com.orchtech.hcww.mvpebrd.ui.home.HomePresenter;
 import hcww.com.orchtech.hcww.mvpebrd.ui.main.MainMvpPresenter;
 import hcww.com.orchtech.hcww.mvpebrd.ui.main.MainMvpView;
 import hcww.com.orchtech.hcww.mvpebrd.ui.main.MainPresenter;
@@ -50,6 +53,12 @@ public class ActivityModule {
     @PerActivity
     SplashMvpPresenter<SplashMvpView> provideSplashPresenter(
             SplashPresenter<SplashMvpView> presenter) {
+        return presenter;
+    }
+    @Provides
+    @PerActivity
+    HomeMvpPresenter<HomeMvpView> provideHomePresenter(
+            HomePresenter<HomeMvpView> presenter) {
         return presenter;
     }
 

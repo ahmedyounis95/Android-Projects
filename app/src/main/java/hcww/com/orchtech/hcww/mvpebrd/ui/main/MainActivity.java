@@ -11,6 +11,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import javax.inject.Inject;
 
@@ -18,6 +19,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import hcww.com.orchtech.hcww.mvpebrd.R;
 import hcww.com.orchtech.hcww.mvpebrd.ui.base.BaseActivity;
+import hcww.com.orchtech.hcww.mvpebrd.ui.home.HomeFragment;
 
 public class MainActivity extends BaseActivity implements MainMvpView  {
 
@@ -40,6 +42,7 @@ public class MainActivity extends BaseActivity implements MainMvpView  {
         Intent intent = new Intent(context, MainActivity.class);
         return intent;
     }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,7 +86,7 @@ public class MainActivity extends BaseActivity implements MainMvpView  {
         mDrawerToggle.syncState();
         setupNavMenu();
         mPresenter.onNavMenuCreated();
-
+        showAboutFragment();
         mPresenter.onViewInitialized();
     }
 
@@ -116,6 +119,12 @@ public class MainActivity extends BaseActivity implements MainMvpView  {
     @Override
     public void showAboutFragment() {
 
+        getSupportFragmentManager()
+                .beginTransaction()
+                .disallowAddToBackStack()
+                .setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right)
+                .add(R.id.cl_root_view, HomeFragment.newInstance(), HomeFragment.TAG)
+                .commit();
     }
 
     @Override

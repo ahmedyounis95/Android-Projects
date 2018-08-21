@@ -20,7 +20,7 @@ import hcww.com.orchtech.hcww.mvpebrd.ui.main.MainActivity;
 import hcww.com.orchtech.hcww.mvpebrd.utils.CommonUtils;
 import hcww.com.orchtech.hcww.mvpebrd.utils.NetworkUtils;
 
-public abstract class BaseActivity extends AppCompatActivity implements MvpView {
+public abstract class BaseActivity extends AppCompatActivity implements MvpView , BaseFragment.Callback {
     private ProgressDialog mProgressDialog;
 
     private ActivityComponent mActivityComponent;
@@ -91,12 +91,12 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
     }
 
     @Override
-    public void onFragmentAttached() {
-
-    }
-    @Override
     public void openActivityOnTokenExpire() {
         startActivity(MainActivity.getStartIntent(this));
+    }
+    @Override
+    public void onFragmentAttached() {
+
     }
 
 
