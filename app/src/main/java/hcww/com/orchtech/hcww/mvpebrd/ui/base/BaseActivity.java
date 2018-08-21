@@ -2,14 +2,24 @@ package hcww.com.orchtech.hcww.mvpebrd.ui.base;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import hcww.com.orchtech.hcww.mvpebrd.MvpApp;
 import hcww.com.orchtech.hcww.mvpebrd.R;
@@ -27,16 +37,30 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
 
     private Unbinder mUnbinder;
 
+    @BindView(R.id.toolbar)
+    Toolbar mToolbar;
+
+    @BindView(R.id.drawer_layout)
+    DrawerLayout mDrawer;
+
+    @BindView(R.id.nav_view)
+    NavigationView mNavigationView;
+
+    ActionBarDrawerToggle mDrawerToggle;
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
         mActivityComponent = DaggerActivityComponent.builder()
                 .activityModule(new ActivityModule(this))
                 .applicationComponent(((MvpApp) getApplication()).getComponent())
                 .build();
+        setUnbinder(ButterKnife.bind(this));
 
-
+        setUp();
     }
     public void showLoading() {
         hideLoading();
@@ -126,5 +150,55 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
 
     }
 
-    protected abstract void setUp();
+
+    protected void setUp() {
+        mToolbar.setTitle("");
+        setSupportActionBar(mToolbar);
+        mDrawerToggle = new ActionBarDrawerToggle(
+                this,
+                mDrawer,
+                mToolbar,
+                R.string.open_drawer,
+                R.string.close_drawer) {
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+                hideKeyboard();
+            }
+
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                super.onDrawerClosed(drawerView);
+            }
+        };
+        mDrawer.addDrawerListener(mDrawerToggle);
+        mDrawerToggle.syncState();
+        setupNavMenu();
+    }
+
+    void setupNavMenu() {
+        mNavigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        mDrawer.closeDrawer(GravityCompat.START);
+                        switch (item.getItemId()) {
+                            case R.id.home:
+//                                mPresenter.onDrawerOptionAboutClick();
+                                return true;
+                            case R.id.my_profile:
+//                                mPresenter.onDrawerRateUsClick();
+                                return true;
+                            case R.id.previous_complains:
+//                                mPresenter.onDrawerMyFeedClick();
+                                return true;
+                            case R.id.news:
+//                                mPresenter.onDrawerOptionLogoutClick();
+                                return true;
+                            default:
+                                return false;
+                        }
+                    }
+                });
+    }
 }

@@ -23,7 +23,7 @@ public class SplashActivity extends BaseActivity implements SplashMvpView {
 
         getActivityComponent().inject(this);
 
-        setUnbinder(ButterKnife.bind(this));
+//        setUnbinder(ButterKnife.bind(this));
 
         mPresenter.onAttach(SplashActivity.this);
 
