@@ -42,7 +42,7 @@ public class ActivityModule {
     }
 
     @Provides
-    SchedulerProvider provideScheduerProvider(){
+    SchedulerProvider provideSchedulerProvider(){
         return new AppSchedulerProvider();
     }
 

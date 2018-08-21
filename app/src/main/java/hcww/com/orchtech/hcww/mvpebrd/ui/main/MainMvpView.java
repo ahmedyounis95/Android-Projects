@@ -18,8 +18,6 @@ public interface MainMvpView extends MvpView {
 
     void updateUserProfilePic(String currentUserProfilePicUrl);
 
-    void updateAppVersion();
-
     void showRateUsDialog();
 
     void openMyFeedActivity();

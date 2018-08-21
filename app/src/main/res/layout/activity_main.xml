@@ -73,7 +73,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:src="@drawable/ic_menu_gallery" />
+                            app:srcCompat="@drawable/ic_menu_gallery" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -118,5 +118,15 @@
         </android.support.design.widget.AppBarLayout>
     </android.support.design.widget.CoordinatorLayout>
 
+    <android.support.design.widget.NavigationView
+        app:itemTextColor="@color/color_side_menu_text"
+        app:itemIconTint="@color/color_side_menu_icons"
+        android:foregroundTint="@color/color_app_bar_background"
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@color/nav_view_background_color"
+        app:menu="@menu/activity_base_drawer" />
 
 </android.support.v4.widget.DrawerLayout>

@@ -40,10 +40,10 @@ public class SplashActivity extends BaseActivity implements SplashMvpView {
     }
 
     @Override
-    public void openMainActivity() {/*
+    public void openMainActivity() {
         Intent intent = MainActivity.getStartIntent(SplashActivity.this);
         startActivity(intent);
-        finish();*/
+        finish();
     }
 
 
@@ -58,23 +58,4 @@ public class SplashActivity extends BaseActivity implements SplashMvpView {
 
     }
 
-    @Override
-    public void onError(int resId) {
-
-    }
-
-    @Override
-    public void onError(String message) {
-
-    }
-
-    @Override
-    public void showMessage(String message) {
-
-    }
-
-    @Override
-    public void showMessage(int resId) {
-
-    }
 }

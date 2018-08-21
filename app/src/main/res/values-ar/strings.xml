@@ -2,4 +2,15 @@
 <resources>
     <string name="register">Register</string>
     <string name="notifications">Notification</string>
+    <string name="home_text">Home</string>
+    <string name="my_profile">My Profile</string>
+    <string name="previous_complains">Previous Complaints</string>
+    <string name="news">News</string>
+    <string name="survey">Survey</string>
+    <string name="help">Help</string>
+    <string name="about_us">About Us</string>
+    <string name="contact_us">Contact Us</string>
+    <string name="language_settings">عربي</string>
+    <string name="logout">Logout</string>
+    <string name="login">Login</string>
 </resources>

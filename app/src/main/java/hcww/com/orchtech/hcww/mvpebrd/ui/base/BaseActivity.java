@@ -4,15 +4,19 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.StringRes;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Toast;
 
 import butterknife.Unbinder;
 import hcww.com.orchtech.hcww.mvpebrd.MvpApp;
+import hcww.com.orchtech.hcww.mvpebrd.R;
 import hcww.com.orchtech.hcww.mvpebrd.di.component.ActivityComponent;
 import hcww.com.orchtech.hcww.mvpebrd.di.component.DaggerActivityComponent;
 import hcww.com.orchtech.hcww.mvpebrd.di.module.ActivityModule;
+import hcww.com.orchtech.hcww.mvpebrd.ui.main.MainActivity;
 import hcww.com.orchtech.hcww.mvpebrd.utils.CommonUtils;
 import hcww.com.orchtech.hcww.mvpebrd.utils.NetworkUtils;
 
@@ -46,6 +50,33 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
         }
     }
 
+    @Override
+    public void onError(String message) {
+        if (message != null) {
+//            showSnackBar(message);
+        } else {
+//            showSnackBar(getString(R.string.some_error));
+        }
+    }
+
+    @Override
+    public void onError(@StringRes int resId) {
+        onError(getString(resId));
+    }
+
+    @Override
+    public void showMessage(String message) {
+        if (message != null) {
+            Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "some error occurred"/*getString(R.string.some_error)*/, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void showMessage(@StringRes int resId) {
+        showMessage(getString(resId));
+    }
+
     public ActivityComponent getActivityComponent() {
         return mActivityComponent;
     }
@@ -63,11 +94,10 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
     public void onFragmentAttached() {
 
     }
-/*
     @Override
     public void openActivityOnTokenExpire() {
-        startActivity(MainActivity.getSt);
-    }*/
+        startActivity(MainActivity.getStartIntent(this));
+    }
 
 
     @Override
