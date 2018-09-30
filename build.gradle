@@ -44,7 +44,7 @@ ext {
     rx2FastAndroidNetworking = '1.0.1'
 
     dagger2Version = '2.8'
-    rxjava2Version = '2.0.6'
+    rxjava2Version = '2.2.2'
     rxandroidVersion = '2.0.2'
     butterKnifeVersion = '8.8.1'
     retroFitVersion = '2.4.0'

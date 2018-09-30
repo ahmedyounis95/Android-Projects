@@ -2,7 +2,6 @@ package hcww.com.orchtech.hcww.mvpebrd.ui.base;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -27,27 +26,31 @@ import hcww.com.orchtech.hcww.mvpebrd.di.component.ActivityComponent;
 import hcww.com.orchtech.hcww.mvpebrd.di.component.DaggerActivityComponent;
 import hcww.com.orchtech.hcww.mvpebrd.di.module.ActivityModule;
 import hcww.com.orchtech.hcww.mvpebrd.ui.main.MainActivity;
+import hcww.com.orchtech.hcww.mvpebrd.ui.main.MainFragment;
 import hcww.com.orchtech.hcww.mvpebrd.utils.CommonUtils;
 import hcww.com.orchtech.hcww.mvpebrd.utils.NetworkUtils;
+import retrofit2.Retrofit;
 
-public abstract class BaseActivity extends AppCompatActivity implements MvpView , BaseFragment.Callback {
-    private ProgressDialog mProgressDialog;
-
-    private ActivityComponent mActivityComponent;
-
-    private Unbinder mUnbinder;
-
+public abstract class BaseActivity extends AppCompatActivity implements MvpView, BaseFragment.Callback {
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
-
     @BindView(R.id.drawer_layout)
     DrawerLayout mDrawer;
-
     @BindView(R.id.nav_view)
     NavigationView mNavigationView;
+    private ActionBarDrawerToggle mDrawerToggle;
+    private ProgressDialog mProgressDialog;
+    private ActivityComponent mActivityComponent;
+    private Unbinder mUnbinder;
 
-    ActionBarDrawerToggle mDrawerToggle;
-
+    @Override
+    public void showMainFragment() {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right)
+                .add(R.id.cl_root_view, MainFragment.newInstance(), MainFragment.TAG)
+                .commit();
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -62,6 +65,7 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
 
         setUp();
     }
+
     public void showLoading() {
         hideLoading();
         mProgressDialog = CommonUtils.showLoadingDialog(this);
@@ -109,6 +113,7 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(newBase);
     }
+
     @Override
     public boolean isNetworkConnected() {
         return NetworkUtils.isNetworkConnected(getApplicationContext());
@@ -118,6 +123,7 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
     public void openActivityOnTokenExpire() {
         startActivity(MainActivity.getStartIntent(this));
     }
+
     @Override
     public void onFragmentAttached() {
 
@@ -128,22 +134,22 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
     public void onFragmentDetached(String tag) {
 
     }
-    public void hideKeyboard()
-    {
+
+    public void hideKeyboard() {
         View view = this.getCurrentFocus();
-        if(view != null)
-        {
+        if (view != null) {
             InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(view.getWindowToken(),0);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
     }
 
-    public void setUnbinder(Unbinder unbinder){mUnbinder = unbinder;}
+    public void setUnbinder(Unbinder unbinder) {
+        mUnbinder = unbinder;
+    }
 
     @Override
     protected void onDestroy() {
-        if(mUnbinder != null)
-        {
+        if (mUnbinder != null) {
             mUnbinder.unbind();
         }
         super.onDestroy();

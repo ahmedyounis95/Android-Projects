@@ -1,4 +1,4 @@
-package hcww.com.orchtech.hcww.mvpebrd.ui.home;
+package hcww.com.orchtech.hcww.mvpebrd.ui.main;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -6,25 +6,40 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import hcww.com.orchtech.hcww.mvpebrd.R;
+import hcww.com.orchtech.hcww.mvpebrd.data.network.Model.HomeData.HomeData;
 import hcww.com.orchtech.hcww.mvpebrd.di.component.ActivityComponent;
 import hcww.com.orchtech.hcww.mvpebrd.ui.base.BaseFragment;
-import hcww.com.orchtech.hcww.mvpebrd.ui.base.BasePresenter;
-import hcww.com.orchtech.hcww.mvpebrd.ui.base.MvpView;
 
-public class HomeFragment extends BaseFragment implements HomeMvpView {
-    public static final String TAG = "HomeFragment";
+public class MainFragment extends BaseFragment implements MainMvpView{
+    public static final String TAG = "MainFragment";
+    @BindView(R.id.banner_image)
+    ImageView bannerImg;
+    @BindView(R.id.txt_date)
+    TextView dateTxt;
+    @BindView(R.id.image_info)
+    ImageView infoImg;
+    @BindView(R.id.txt_time)
+    TextView timeTxt;
+    @BindView(R.id.txt_info_title)
+    TextView infoTitleTxt;
+
 
     @Inject
-    HomeMvpPresenter<HomeMvpView> mPresenter;
+    MainMvpPresenter<MainMvpView> mPresenter;
 
-    public static HomeFragment newInstance(){
+    public static MainFragment newInstance(){
         Bundle args = new Bundle();
-        HomeFragment homeFragment = new HomeFragment();
+        MainFragment homeFragment = new MainFragment();
         homeFragment.setArguments(args);
         return homeFragment;
     }
@@ -41,7 +56,7 @@ public class HomeFragment extends BaseFragment implements HomeMvpView {
             setUnBinder(ButterKnife.bind(this, view));
             mPresenter.onAttach(this);
         }
-
+        mPresenter.onViewInitialized();
         return view;
     }
 
@@ -54,6 +69,7 @@ public class HomeFragment extends BaseFragment implements HomeMvpView {
             }
         });
     }
+
 
     @Override
     public void onFragmentAttached() {
@@ -70,5 +86,13 @@ public class HomeFragment extends BaseFragment implements HomeMvpView {
     public void onDestroyView() {
         mPresenter.onDetach();
         super.onDestroyView();
+    }
+
+
+    @Override
+    public void getHomeData(HomeData homeData) {
+        Glide.with(getBaseActivity()).load(homeData.getHomeImage().getImageUrl()).into(bannerImg);
+        infoTitleTxt.setText(homeData.getPinnedInformation().getTitle());
+        Glide.with(getBaseActivity()).load(homeData.getPinnedInformation().getPictureUrl()).into(infoImg);
     }
 }

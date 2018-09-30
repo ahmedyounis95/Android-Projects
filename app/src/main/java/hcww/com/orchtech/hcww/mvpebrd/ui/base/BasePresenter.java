@@ -1,30 +1,43 @@
 package hcww.com.orchtech.hcww.mvpebrd.ui.base;
 
+import android.graphics.Color;
+import android.support.design.widget.Snackbar;
+import android.text.TextUtils;
 import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 
 import com.androidnetworking.common.ANConstants;
-import com.androidnetworking.error.ANError;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 
 import javax.inject.Inject;
 import javax.net.ssl.HttpsURLConnection;
 
 import hcww.com.orchtech.hcww.mvpebrd.R;
+import hcww.com.orchtech.hcww.mvpebrd.data.DataManager;
+import hcww.com.orchtech.hcww.mvpebrd.data.network.Model.ApiDefaults.ApiError;
 import hcww.com.orchtech.hcww.mvpebrd.utils.rx.SchedulerProvider;
 import io.reactivex.disposables.CompositeDisposable;
+import retrofit2.HttpException;
 
 public class BasePresenter<V extends MvpView> implements MvpPresenter<V> {
     private static final String TAG = "BasePresenter";
     private final SchedulerProvider mSchedulerProvider;
     private final CompositeDisposable mCompositeDisposable;
+    private final DataManager mDataManager;
     private V mMvpView;
-
     @Inject
-    public BasePresenter(SchedulerProvider schedulerProvider, CompositeDisposable compositeDisposable) {
+    public BasePresenter(SchedulerProvider schedulerProvider, CompositeDisposable compositeDisposable,DataManager dataManager) {
         this.mSchedulerProvider = schedulerProvider;
         this.mCompositeDisposable = compositeDisposable;
+        this.mDataManager = dataManager;
     }
 
     @Override
@@ -46,6 +59,8 @@ public class BasePresenter<V extends MvpView> implements MvpPresenter<V> {
         return mCompositeDisposable;
     }
 
+    public DataManager getDataManager(){return mDataManager;}
+
 
     public boolean isViewAttached() {
         return mMvpView != null;
@@ -60,36 +75,34 @@ public class BasePresenter<V extends MvpView> implements MvpPresenter<V> {
     }
 
     @Override
-    public void handleApiError(ANError error) {
-       /* if (error == null || error.getErrorBody() == null) {
+    public void handleApiError(Throwable e) {
+       /* if (error == null || error.message() == null) {
             getMvpView().onError(R.string.api_default_error);
             return;
         }
-
-        if (error.getErrorCode() == AppConstants.API_STATUS_CODE_LOCAL_ERROR
-                && error.getErrorDetail().equals(ANConstants.CONNECTION_ERROR)) {
+        if (error.code() == 500) {
             getMvpView().onError(R.string.connection_error);
             return;
         }
-
-        if (error.getErrorCode() == AppConstants.API_STATUS_CODE_LOCAL_ERROR
+*//*
+        if (error.code()== AppConstants.API_STATUS_CODE_LOCAL_ERROR
                 && error.getErrorDetail().equals(ANConstants.REQUEST_CANCELLED_ERROR)) {
             getMvpView().onError(R.string.api_retry_error);
             return;
-        }
+        }*//*
 
         final GsonBuilder builder = new GsonBuilder().excludeFieldsWithoutExposeAnnotation();
         final Gson gson = builder.create();
 
         try {
-            ApiError apiError = gson.fromJson(error.getErrorBody(), ApiError.class);
+            ApiError apiError = gson.fromJson(error.message(), ApiError.class);
 
             if (apiError == null || apiError.getMessage() == null) {
                 getMvpView().onError(R.string.api_default_error);
                 return;
             }
 
-            switch (error.getErrorCode()) {
+            switch (error.code()) {
                 case HttpsURLConnection.HTTP_UNAUTHORIZED:
                 case HttpsURLConnection.HTTP_FORBIDDEN:
                     setUserAsLoggedOut();
@@ -103,6 +116,35 @@ public class BasePresenter<V extends MvpView> implements MvpPresenter<V> {
             Log.e(TAG, "handleApiError", e);
             getMvpView().onError(R.string.api_default_error);
         }*/
+        String message = "";
+        try {
+            if (e instanceof IOException) {
+                message = "No internet connection!";
+            } else if (e instanceof com.jakewharton.retrofit2.adapter.rxjava2.HttpException) {
+                com.jakewharton.retrofit2.adapter.rxjava2.HttpException error = (com.jakewharton.retrofit2.adapter.rxjava2.HttpException) e;
+                String errorBody = error.response().errorBody().string();
+                JSONObject jObj = new JSONObject(errorBody);
+
+                message = jObj.getString("error");
+            }
+        } catch (IOException e1) {
+            e1.printStackTrace();
+        } catch (JSONException e1) {
+            e1.printStackTrace();
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        }
+
+        if (TextUtils.isEmpty(message)) {
+            message = "Unknown error occurred! Check LogCat.";
+        }
+
+        getMvpView().showMessage(message);
+/*
+        View sbView = snackbar.getView();
+        TextView textView = sbView.findViewById(android.support.design.R.id.snackbar_text);
+        textView.setTextColor(Color.YELLOW);
+        snackbar.show();*/
     }
 
     @Override

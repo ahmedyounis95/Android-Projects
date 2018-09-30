@@ -17,6 +17,13 @@
     <string name="language_settings">عربي</string>
     <string name="logout">Logout</string>
     <string name="login">Login</string>
+
+    <!--App Message-->
+    <string name="api_retry_error">Please retry!</string>
+    <string name="api_default_error">Something wrong happened!</string>
+    <string name="some_error">Some Error Occurred!</string>
+    <string name="connection_error">Internet connection lost!</string>
+
     <string name="suggestions">Suggestions</string>
     <string name="complains">Complaints</string>
     <string name="invoices">Invoices</string>

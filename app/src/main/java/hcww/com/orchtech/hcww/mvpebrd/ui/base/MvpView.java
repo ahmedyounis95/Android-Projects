@@ -4,6 +4,8 @@ import android.support.annotation.StringRes;
 
 public interface MvpView {
 
+    void showMainFragment();
+
     void showLoading();
 
     void hideLoading();
