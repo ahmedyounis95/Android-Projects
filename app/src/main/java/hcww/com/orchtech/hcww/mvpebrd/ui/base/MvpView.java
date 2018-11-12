@@ -4,8 +4,6 @@ import android.support.annotation.StringRes;
 
 public interface MvpView {
 
-    void showMainFragment();
-
     void showLoading();
 
     void hideLoading();
@@ -21,10 +19,6 @@ public interface MvpView {
     void showMessage(@StringRes int resId);
 
     boolean isNetworkConnected();
-
-    void onFragmentAttached();
-
-    void onFragmentDetached(String tag);
 
     void hideKeyboard();
 }

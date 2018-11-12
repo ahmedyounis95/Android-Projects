@@ -1,0 +1,559 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="none"
+    android:layout_marginTop="?android:actionBarSize"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/color_white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="10">
+
+            <ImageView
+                android:id="@+id/company_img"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:layout_weight="2"
+                android:src="@drawable/about_us" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/company_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/company_text"
+            android:textColor="@color/home_color1"
+            android:textSize="@dimen/xl_text_size"/>
+        <LinearLayout
+            android:weightSum="2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp"
+            >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_location_icon"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/address_text"
+                android:textColor="@color/home_color1"
+                android:layout_marginStart="2dp"
+                android:layout_marginEnd="2dp"/>
+            <TextView
+                android:layout_weight="2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/address_text"
+                android:text="a"
+                android:textColor="@color/home_color1"
+                android:layout_marginStart="2dp"
+                android:layout_marginEnd="2dp"/>
+
+            <LinearLayout
+                android:id="@+id/drive_me_btn"
+                android:layout_width="96dp"
+                android:layout_height="32dp"
+                style="@style/RobotoButtonStyle"
+                android:clickable="true"
+                android:weightSum="1"
+                android:orientation="horizontal"
+                android:focusable="true">
+
+
+                <TextView
+                    android:layout_weight="0.7"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="12sp"
+                    android:textColor="@color/white"
+                    android:text="@string/drive_me_text"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    />
+
+                <ImageView
+                    android:layout_weight="0.3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="8dp"
+                    android:tint="@color/white"
+                    app:srcCompat="@drawable/ic_baseline_map_24px"
+                    android:layout_marginRight="8dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp"
+            >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_telephone_icon"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/telephone_text"
+                android:textColor="@color/home_color1"
+                android:layout_marginStart="2dp"
+                android:layout_marginEnd="2dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/available_text"
+                    android:textSize="@dimen/small_text_size"
+                    android:textColor="@color/home_color3"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginEnd="2dp"
+                    />
+
+
+            </LinearLayout>
+            <View
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:id="@+id/telephone1_text"
+                android:text="@string/number_dum"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/light_blue"
+                android:layout_weight="1"
+                android:textSize="@dimen/mid_text_size"
+                android:textAlignment="viewEnd"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:gravity="end" />
+            <LinearLayout
+                android:id="@+id/call1_btn"
+                android:layout_width="96dp"
+                android:layout_height="32dp"
+                style="@style/RobotoButtonStyle"
+                android:clickable="true"
+                android:weightSum="1"
+                android:orientation="horizontal"
+                android:focusable="true"
+                >
+
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_weight="0.7"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/white"
+                    android:text="@string/call1_text"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    />
+
+                <ImageView
+                    android:id="@+id/img"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.3"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    app:srcCompat="@drawable/ic_contact_us_icon"
+                    android:layout_marginEnd="8dp"
+                    android:tint="@color/white"
+                    android:layout_marginRight="8dp" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="viewEnd"
+                android:text="@string/number_dum"
+                android:textColor="@color/light_blue"
+                android:id="@+id/telephone2_text"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:gravity="end" />
+
+            <LinearLayout
+                android:id="@+id/call2_btn"
+                android:layout_width="96dp"
+                android:layout_height="32dp"
+                style="@style/RobotoButtonStyle"
+                android:clickable="true"
+                android:weightSum="1"
+                android:orientation="horizontal"
+                android:focusable="true">
+
+
+                <TextView
+                    android:layout_weight="0.7"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="8dp"
+                    android:textColor="@color/white"
+                    android:text="@string/call2_text"
+                    android:layout_marginStart="8dp" />
+
+                <ImageView
+                    android:layout_weight="0.3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    app:srcCompat="@drawable/ic_contact_us_icon"
+                    android:layout_marginEnd="8dp"
+                    android:tint="@color/white"
+                    android:layout_marginRight="8dp" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/number_dum"
+                android:textColor="@color/light_blue"
+                android:textAlignment="viewEnd"
+                android:id="@+id/telephone3_text"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:gravity="end" />
+            <LinearLayout
+                android:id="@+id/call3_btn"
+                android:layout_width="96dp"
+                android:layout_height="32dp"
+                style="@style/RobotoButtonStyle"
+                android:clickable="true"
+                android:weightSum="1"
+                android:orientation="horizontal"
+                android:focusable="true">
+
+
+                <TextView
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.7"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/white"
+                    android:text="@string/call3_text"
+                    />
+
+                <ImageView
+                    android:layout_weight="0.3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    app:srcCompat="@drawable/ic_contact_us_icon"
+                    android:layout_marginEnd="8dp"
+                    android:tint="@color/white"
+                    android:layout_marginRight="8dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="start"
+            android:gravity="start">
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/light_blue"
+                android:layout_weight="1"
+                android:layout_gravity="start"
+                android:gravity="start">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/ic_hotline_icon"
+                    android:adjustViewBounds="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/hotline_text"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginEnd="2dp"
+                    android:textColor="@color/home_color1"/>
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    tools:ignore="NestedWeights" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/hotline_number_text"
+                android:textColor="@color/light_blue"
+                android:textAlignment="viewEnd"
+                android:layout_marginEnd="12dp"
+                tools:ignore="RtlSymmetry"
+                android:gravity="end"
+                android:layout_marginStart="12dp" />
+
+                <View
+                    android:layout_width="96dp"
+                    android:layout_height="32dp"/>
+            </LinearLayout>
+<!--
+            <Button
+                android:id="@+id/call_hotline_btn"
+                android:layout_width="84dp"
+                android:layout_height="32dp"
+                android:drawableEnd="@drawable/ic_contact_us_icon"
+                android:drawableRight="@drawable/ic_contact_us_icon"
+                android:drawableTint="@color/color_white"
+                android:paddingRight="4dp"
+                android:paddingLeft="4dp"
+                android:text="@string/call_hotline_text"
+                android:textColor="@color/color_white"
+                tools:targetApi="m" />-->
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/available_everyday_text"
+            android:textSize="@dimen/small_text_size"
+            android:textColor="@color/home_color3"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/call_with_telephone_text"
+                android:textSize="@dimen/small_text_size"
+                android:textColor="@color/home_color3"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                />
+        <!--<TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/normal_rates_text"
+            android:textSize="@dimen/small_text_size"
+            android:textColor="@color/home_color3"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            />-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="10"
+                android:layout_marginTop="8dp"
+                android:layout_gravity="start"
+                android:gravity="start">
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/light_blue"
+                    android:layout_weight="10"
+                    android:layout_gravity="start"
+                    android:gravity="start"
+                    >
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/ic_whatsapp_icon"
+                        android:adjustViewBounds="true"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/whatsapp_text"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginEnd="2dp"
+                        android:textColor="@color/home_color1"/>
+
+                    <View
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"/>
+                    <TextView
+                        android:id="@+id/whatsapp_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/number_dum"
+                        android:textColor="@color/light_blue"
+                        android:layout_marginEnd="12dp"
+                        android:layout_marginRight="12dp"
+                        />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/save_whatsapp_btn"
+                    android:layout_width="96dp"
+                    android:layout_height="32dp"
+                    style="@style/RobotoButtonStyle"
+                    android:clickable="true"
+                    android:weightSum="1"
+                    android:orientation="horizontal"
+                    android:focusable="true"
+                    >
+
+
+                    <TextView
+                        android:layout_weight="0.7"
+                        android:layout_width="0dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@color/white"
+                        android:text="@string/save_text"
+                        />
+                    <ImageView
+                        android:layout_weight="0.3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        app:srcCompat="@drawable/ic_whatsapp_icon"
+                        android:layout_marginEnd="8dp"
+                        android:tint="@color/white"
+                        android:layout_marginRight="8dp" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp"
+                >
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/ic_working_hours_icon"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/working_hours_text"
+                    android:textColor="@color/home_color1"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="4dp"/>
+                <TextView
+                    android:id="@+id/working_hours_from_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/working_hours_from_text"
+                    android:textColor="@color/home_color1"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="4dp"/>
+                <TextView
+                    android:id="@+id/working_hours_to_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/working_hours_to_text"
+                    android:textColor="@color/home_color1"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginEnd="2dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp"
+                >
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/ic_website_icon"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/website_text"
+                    android:textColor="@color/home_color1"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginEnd="2dp"/>
+                <TextView
+                    android:autoLink="web"
+                    android:textColorLink="@color/light_blue"
+                    android:id="@+id/website_text"
+                    android:textAlignment="viewStart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/website_text_dumm"
+                    android:textColor="@color/light_blue"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginEnd="2dp"
+                    android:gravity="start" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

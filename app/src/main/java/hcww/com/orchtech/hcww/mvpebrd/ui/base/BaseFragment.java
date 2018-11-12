@@ -41,13 +41,6 @@ public abstract class BaseFragment extends Fragment implements MvpView {
         }
     }
 
-    @Override
-    public void showMainFragment() {
-        if (mActivity != null)
-        {
-            mActivity.showMainFragment();
-        }
-    }
 
     @Override
     public void showLoading() {

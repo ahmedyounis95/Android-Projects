@@ -11,4 +11,7 @@ public interface PreferencesHelper {
 
     void setCurrentUserId(Long userId);
 
+    String getLang();
+
+    void saveLang(String language);
 }

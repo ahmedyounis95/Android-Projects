@@ -1,4 +1,4 @@
-package hcww.com.orchtech.hcww.mvpebrd.ui.main;
+package hcww.com.orchtech.hcww.mvpebrd.ui.home;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -20,8 +20,8 @@ import hcww.com.orchtech.hcww.mvpebrd.data.network.Model.HomeData.HomeData;
 import hcww.com.orchtech.hcww.mvpebrd.di.component.ActivityComponent;
 import hcww.com.orchtech.hcww.mvpebrd.ui.base.BaseFragment;
 
-public class MainFragment extends BaseFragment implements MainMvpView{
-    public static final String TAG = "MainFragment";
+public class HomeFragment extends BaseFragment implements HomeMvpView{
+    public static final String TAG = "HomeFragment";
     @BindView(R.id.banner_image)
     ImageView bannerImg;
     @BindView(R.id.txt_date)
@@ -35,13 +35,18 @@ public class MainFragment extends BaseFragment implements MainMvpView{
 
 
     @Inject
-    MainMvpPresenter<MainMvpView> mPresenter;
+    HomeMvpPresenter<HomeMvpView> mPresenter;
 
-    public static MainFragment newInstance(){
+    public static HomeFragment newInstance(){
         Bundle args = new Bundle();
-        MainFragment homeFragment = new MainFragment();
+        HomeFragment homeFragment = new HomeFragment();
         homeFragment.setArguments(args);
         return homeFragment;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
     }
 
     @Nullable
@@ -56,6 +61,7 @@ public class MainFragment extends BaseFragment implements MainMvpView{
             setUnBinder(ButterKnife.bind(this, view));
             mPresenter.onAttach(this);
         }
+
         mPresenter.onViewInitialized();
         return view;
     }
@@ -72,17 +78,6 @@ public class MainFragment extends BaseFragment implements MainMvpView{
 
 
     @Override
-    public void onFragmentAttached() {
-
-    }
-
-
-    @Override
-    public void onFragmentDetached(String tag) {
-
-    }
-
-    @Override
     public void onDestroyView() {
         mPresenter.onDetach();
         super.onDestroyView();
@@ -95,4 +90,5 @@ public class MainFragment extends BaseFragment implements MainMvpView{
         infoTitleTxt.setText(homeData.getPinnedInformation().getTitle());
         Glide.with(getBaseActivity()).load(homeData.getPinnedInformation().getPictureUrl()).into(infoImg);
     }
+
 }

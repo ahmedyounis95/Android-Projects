@@ -39,4 +39,14 @@ public class AppPreferencesHelper implements PreferencesHelper{
     public void setCurrentUserId(Long userId) {
 
     }
+
+    @Override
+    public String getLang() {
+        return mPrefs.getString("LANG","ar");
+    }
+
+    @Override
+    public void saveLang(String language) {
+        mPrefs.edit().putString("LANG",language).apply();
+    }
 }

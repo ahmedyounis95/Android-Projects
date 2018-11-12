@@ -34,4 +34,27 @@
     <string name="time_sample">10:30AM</string>
     <string name="info_title_sample">How to save water at home</string>
     <string name="read_more">Read more</string>
+    <string name="company_txt_dumm">Greater Company</string>
+    <string name="bad_connection">No internet connection!</string>
+    <string name="retry">Retry</string>
+    <string name="company_text">Greater Cairo Company</string>
+    <string name="address_text">Address</string>
+    <string name="drive_me_text">Drive me</string>
+    <string name="telephone_text">Telephone</string>
+    <string name="available_text">Available 24/7</string>
+    <string name="number_dum">0100000000000</string>
+    <string name="call1_text">Call 1</string>
+    <string name="call2_text">Call 2</string>
+    <string name="call3_text">Call 3</string>
+    <string name="hotline_text">Hotline</string>
+    <string name="hotline_number_text">125</string>
+    <string name="available_everyday_text">Available 24/7 including holidays</string>
+    <string name="call_with_telephone_text">Please call using the landline</string>
+    <string name="whatsapp_text">Whatsapp</string>
+    <string name="save_text">Save</string>
+    <string name="working_hours_text">Working hours</string>
+    <string name="working_hours_from_text">08:00 am</string>
+    <string name="working_hours_to_text">04:00 pm</string>
+    <string name="website_text">Website</string>
+    <string name="website_text_dumm">www.google.com</string>
 </resources>

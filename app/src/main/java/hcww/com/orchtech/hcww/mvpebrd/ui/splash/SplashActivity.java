@@ -23,7 +23,7 @@ public class SplashActivity extends BaseActivity implements SplashMvpView {
 
         getActivityComponent().inject(this);
 
-//        setUnbinder(ButterKnife.bind(this));
+        setUnbinder(ButterKnife.bind(this));
 
         mPresenter.onAttach(SplashActivity.this);
 
@@ -51,11 +51,6 @@ public class SplashActivity extends BaseActivity implements SplashMvpView {
     protected void onDestroy() {
         mPresenter.onDetach();
         super.onDestroy();
-    }
-
-    @Override
-    public void openActivityOnTokenExpire() {
-
     }
 
 }

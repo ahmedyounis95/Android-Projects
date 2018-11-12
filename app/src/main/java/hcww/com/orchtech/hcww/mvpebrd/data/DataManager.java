@@ -1,14 +1,17 @@
 package hcww.com.orchtech.hcww.mvpebrd.data;
 
+import hcww.com.orchtech.hcww.mvpebrd.data.db.DbHelper;
 import hcww.com.orchtech.hcww.mvpebrd.data.network.ApiHelper;
 import hcww.com.orchtech.hcww.mvpebrd.data.network.Model.HomeData.HomeData;
 import hcww.com.orchtech.hcww.mvpebrd.data.prefs.PreferencesHelper;
 import io.reactivex.Single;
 import retrofit2.http.Query;
 
-public interface DataManager extends PreferencesHelper,ApiHelper {
+public interface DataManager extends PreferencesHelper,ApiHelper,DbHelper {
 
     Single<HomeData> getHomeData(@Query("languageId") int languageId);
+
+//    Single<List<ContactUsList>> getContactUsList(@Query("languageId") int languageId);
 
     enum LoggedInMode{
         LOGGED_IN_MODE_LOGGED_OUT(0),

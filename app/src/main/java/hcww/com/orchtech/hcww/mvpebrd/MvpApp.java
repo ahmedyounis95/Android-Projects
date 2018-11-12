@@ -6,7 +6,8 @@ import hcww.com.orchtech.hcww.mvpebrd.di.component.ApplicationComponent;
 import hcww.com.orchtech.hcww.mvpebrd.di.component.DaggerApplicationComponent;
 import hcww.com.orchtech.hcww.mvpebrd.di.module.ApplicationModule;
 import hcww.com.orchtech.hcww.mvpebrd.di.module.NetModule;
-import hcww.com.orchtech.hcww.mvpebrd.utils.STATICS;
+import hcww.com.orchtech.hcww.mvpebrd.utils.AppConstants;
+import hcww.com.orchtech.hcww.mvpebrd.utils.AppLogger;
 
 public class MvpApp extends Application {
 
@@ -16,9 +17,10 @@ public class MvpApp extends Application {
         super.onCreate();
         mApplicationComponent = DaggerApplicationComponent.builder()
                 .applicationModule(new ApplicationModule(this))
-                .netModule(new NetModule(STATICS.BASE_URLS)).build();
+                .netModule(new NetModule(AppConstants.BASE_URLS)).build();
         mApplicationComponent.inject(this);
 
+        AppLogger.init();
 
 
     }
