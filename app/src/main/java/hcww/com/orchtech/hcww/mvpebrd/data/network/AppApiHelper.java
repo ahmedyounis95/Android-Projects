@@ -11,8 +11,6 @@ import hcww.com.orchtech.hcww.mvpebrd.MvpApp;
 import hcww.com.orchtech.hcww.mvpebrd.data.network.Model.HomeData.HomeData;
 import hcww.com.orchtech.hcww.mvpebrd.data.network.Model.contactuslist.ContactUsList;
 import hcww.com.orchtech.hcww.mvpebrd.di.ApplicationContext;
-import io.reactivex.Observable;
-import io.reactivex.ObservableSource;
 import io.reactivex.Single;
 import retrofit2.Retrofit;
 
@@ -20,6 +18,7 @@ import retrofit2.Retrofit;
 public class AppApiHelper implements ApiHelper {
 
     private Context mContext;
+    private Retrofit retrofit = ((MvpApp) mContext).getComponent().getRetrofit();
 
     @Inject
     public AppApiHelper(@ApplicationContext Context context){
@@ -29,13 +28,14 @@ public class AppApiHelper implements ApiHelper {
 
     @Override
     public Single<HomeData> getHomeData(int languageId) {
-        Retrofit retrofit = ((MvpApp) mContext).getComponent().getRetrofit();
         return retrofit.create(ApiHelper.class).getHomeData(languageId);
     }
 
     @Override
     public Single<List<ContactUsList>> getContactUsList(int languageId) {
-        Retrofit retrofit = ((MvpApp) mContext).getComponent().getRetrofit();
         return retrofit.create(ApiHelper.class).getContactUsList(languageId);
     }
+
+
+
 }

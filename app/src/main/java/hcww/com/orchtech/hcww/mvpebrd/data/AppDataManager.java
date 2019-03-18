@@ -43,6 +43,7 @@ public class AppDataManager implements DataManager {
         return mApiHelper.getContactUsList(languageId);
     }
 
+
     @Override
     public int getCurrentUserLoggedInMode() {
         return mPreferencesHelper.getCurrentUserLoggedInMode();

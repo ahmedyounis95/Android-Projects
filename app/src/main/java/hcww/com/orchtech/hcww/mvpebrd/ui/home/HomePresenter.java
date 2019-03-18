@@ -7,10 +7,6 @@ import javax.inject.Inject;
 import hcww.com.orchtech.hcww.mvpebrd.data.DataManager;
 import hcww.com.orchtech.hcww.mvpebrd.data.network.Model.HomeData.HomeData;
 import hcww.com.orchtech.hcww.mvpebrd.ui.base.BasePresenter;
-import hcww.com.orchtech.hcww.mvpebrd.ui.main.MainActivity;
-import hcww.com.orchtech.hcww.mvpebrd.ui.main.MainMvpPresenter;
-import hcww.com.orchtech.hcww.mvpebrd.ui.main.MainMvpView;
-import hcww.com.orchtech.hcww.mvpebrd.ui.main.MainPresenter;
 import hcww.com.orchtech.hcww.mvpebrd.utils.AppLogger;
 import hcww.com.orchtech.hcww.mvpebrd.utils.rx.SchedulerProvider;
 import io.reactivex.disposables.CompositeDisposable;
@@ -61,6 +57,7 @@ public class HomePresenter<V extends HomeMvpView> extends BasePresenter<V> imple
                   getMvpView().hideLoading();
               }
           }));
+
 
     }
 
